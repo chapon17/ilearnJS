@@ -1,10 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>JS</title>
 </head>
+
 <body>
-    
+   <script id="part1">
+        //пример 1 C равно 2 потому что мы сначала  добавляем к a единицу а потом присваиваем переменной с значение а к 
+        let a = 1,
+            b = 1,
+            c, d;
+        c = ++a;
+        alert(c); // ответ: 2
+        //пример 2 d равно 1 потому что мы сначала присваиваем  переменной d значение b а потом к b добавляем единицу
+        d = b++;
+        alert(d); //ответ: 1
+        //пример 3 c равно 5 потому что мы складываем 2 с переменной a, значение которой 2 и к которой мы перед сложением добавляем еденицу
+        c = 2 + ++a;
+        alert(c); //ответ: 5
+        //пример 4
+        d = 2 + b++;
+        alert(d); //ответ: 4 потому что мы к переменной b добавляем еденицу после сложения
+        alert(a); //3
+        alert(b); //3
+
+    </script>
+     <script id="part2">
+        //x равен 5 потому что мы складывает 1 с переменной a, которую мы умножили на 2
+        let a = 2;
+        let x = 1 + (a *= 2);
+        
+    </script>-->
+ <script id="part3">
+       let a = 3;
+       let b = 2;
+       let c;
+       if  (a>0 && b>0){
+           c = a-b;
+           alert(c);
+       }
+       else {
+           if(a<0 && b<0){
+               c =a*b;
+               alert(c);
+           }else{
+               if (Math.sign(a)!=Math.sign(b)){
+                   c =a+b;
+                   alert(c)
+               }
+           }
+    </script>
+    <script id="part4">
+        function addition(a, b) {
+            return a + b;
+        }
+        function multiplication(a, b) {
+            return a * b;
+        }
+        function subtraction(a, b) {
+            return a + b;
+        }
+        function division(a, b) {
+            return a + b;
+        }
+    </script>
+    <script id="part5">
+        function addition(a, b) {
+            return a + b;
+        }
+
+        function multiplication(a, b) {
+            return a * b;
+        }
+
+        function subtraction(a, b) {
+            return a - b;
+        }
+
+        function division(a, b) {
+            return a / b;
+        }
+
+        function mathOperation(arg1, arg2, operation) {
+
+            switch (operation) {
+                case '+':
+                    return addition(arg1, arg2);
+                    break;
+                case '-':
+                    return subtraction(arg1, arg2);
+                    break;
+                case '/':
+                    return division(arg1, arg2);
+                    break;
+                case '*':
+                    return multiplication(arg1, arg2);
+                    break;
+            }
+        }
+        let a = mathOperation(3, 3, '-');
+        alert(a);
+    </script>
 </body>
+
 </html>
