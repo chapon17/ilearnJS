@@ -1,10 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>JS</title>
 </head>
+
 <body>
-    
+    <script id='1'>
+        function one(x) {
+            let final = {
+                units: null,
+                tens: null,
+                hundreds: null
+            };
+
+            function units(x) {
+                if (x < 10) return x;
+                if (x > 10 && x < 100) {
+                    x = x % 10;
+                    return x;
+
+                }
+                if (x < 1000) {
+                    x = x % 10;
+                    return x;
+
+                }
+            }
+
+            function tens(x) {
+                if (x < 10) return 0;
+                if (x > 10 && x < 100) {
+                    x = x / 10;
+                    if (x == Number.isInteger(x)) return x;
+                    x = Math.floor(x);
+                    return x;
+
+                };
+
+                if (x >= 100) {
+                    x = x % 100;
+                    x = x / 10;
+                    if (x == Number.isInteger(x)) return x;
+                    x = Math.floor(x);
+                    return x;
+
+                };
+            }
+
+            function hundreds(x) {
+                if (x <= 99) return 0;
+                x = x / 100;
+                if (x == Number.isInteger(x)) return x;
+                x = Math.floor(x);
+                return x;
+
+            }
+            if (x < 0 || x > 999 || Number.isInteger(x) == false) return 'Введите верное число!';
+            else {
+                final.units = units(x);
+                final.tens = tens(x);
+                final.hundreds = hundreds(x);
+                return final;
+            };
+        }
+        let x = 862;;
+        console.log(one(x));
+
+        function Product(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+
+    </script>
+    <script id='1.1 e5'>
+        'use strict';
+        Product.prototype.discount = function() {
+            this.price = this.price - (this.price * 25 / 100);
+        };
+
+        const product1 = new Product('Tovar', 549);
+        product1.discount();
+        console.log(product);
+
+    </script>
+    <script id='1.1 e6'>
+        'use strict';
+
+        class Product {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+
+            discount() {
+                this.price = this.price - (this.price * 25 / 100);
+            }
+        }
+
+        const product1 = new Product('Tovar', 377);
+        product1.discount();
+
+        console.log(product1);
+
+    </script>
+    <script id='1.2 e5'>
+        'use strict';
+
+        function Post(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+
+        Post.prototype.edit = function(text) {
+            this.text = text;
+        }
+
+        const post1 = new Post('alex', 'lorem ipsum', new Date());
+        console.log(post1);
+        post1.edit('dolor sit');
+        console.log(post1);
+
+
+        function AttachedPost(author, text, date) {
+            Post.call(this, author, text, date);
+            this.highlighted = false;
+        }
+
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.constructor = AttachedPost;
+
+        AttachedPost.prototype.makeTextHighlighted = function() {
+            this.highlighted = true;
+        }
+
+        const attached1 = new AttachedPost('admin', 'lorem2 ipsum2', new Date());
+        console.log(attached1);
+        attached1.makeTextHighlighted();
+        attached1.edit('dolor2 sit2');
+        console.log(attached1);
+
+    </script>
+    <script id='1.2 e6'>
+        'use strict';
+
+        function Post(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+
+        Post.prototype.edit = function(text) {
+            this.text = text;
+        }
+
+        const post1 = new Post('alex', 'lorem ipsum', new Date());
+        console.log(post1);
+        post1.edit('dolor sit');
+        console.log(post1);
+
+
+        function AttachedPost(author, text, date) {
+            Post.call(this, author, text, date);
+            this.highlighted = false;
+        }
+
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.constructor = AttachedPost;
+
+        AttachedPost.prototype.makeTextHighlighted = function() {
+            this.highlighted = true;
+        }
+
+        const attached1 = new AttachedPost('admin', 'lorem2 ipsum2', new Date());
+        console.log(attached1);
+        attached1.makeTextHighlighted();
+        attached1.edit('dolor2 sit2');
+        console.log(attached1);
+
+    </script>
 </body>
+
 </html>
