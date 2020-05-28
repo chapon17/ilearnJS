@@ -4,182 +4,106 @@
 <head>
     <meta charset="UTF-8">
     <title>JS</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<body>
-    <script id='1'>
-        function one(x) {
-            let final = {
-                units: null,
-                tens: null,
-                hundreds: null
-            };
+<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa tempora, nostrum culpa, omnis aliquam nesciunt!</h5>
 
-            function units(x) {
-                if (x < 10) return x;
-                if (x > 10 && x < 100) {
-                    x = x % 10;
-                    return x;
+<body id="body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa architecto ad delectus saepe quaerat consectetur veniam, vel deleniti, numquam molestiae sunt, itaque harum, velit! Dolores quidem, eos voluptates perspiciatis! Distinctio, consequatur sapiente consequuntur. Amet, ipsa. Ducimus vel id assumenda officia inventore distinctio enim, nam sit hic fugit, similique, illo quod!</p>
+    <button onclick="lizard()"> Модальное окно</button>
+    <div class="infopanel">
 
-                }
-                if (x < 1000) {
-                    x = x % 10;
-                    return x;
+        <div class="infoblock">
+            <p class="infop">Product 1 name</p>
+            <img src="./img/infobg.jpg" id="pic1" alt="Product1img" width="200" height="200">
+            <input type="button" class="infob" onclick='infotext1()' id="btn1" value="Подробнее">
+        </div>
+        <div class="infoblock">
+            <p class="infop">Product 2 name</p>
+            <img src="./img/infobg.jpg" id="pic2" alt="Product2img" width="200" height="200">
+            <input type="button" class="infob" onclick='infotext2()' id="btn2" value="Подробнее">
+        </div>
+        <div class="infoblock">
+            <p class="infop">Product 2 name</p>
+            <img src="./img/infobg.jpg" id="pic3" alt="Product2img" width="200" height="200">
+            <input type="button" class="infob" onclick='infotext3()' id="btn3" value="Подробнее">
+        </div>
+    </div>
+    <input type="button" value="Создать шахматную доску">
 
-                }
-            }
-
-            function tens(x) {
-                if (x < 10) return 0;
-                if (x > 10 && x < 100) {
-                    x = x / 10;
-                    if (x == Number.isInteger(x)) return x;
-                    x = Math.floor(x);
-                    return x;
-
-                };
-
-                if (x >= 100) {
-                    x = x % 100;
-                    x = x / 10;
-                    if (x == Number.isInteger(x)) return x;
-                    x = Math.floor(x);
-                    return x;
-
-                };
-            }
-
-            function hundreds(x) {
-                if (x <= 99) return 0;
-                x = x / 100;
-                if (x == Number.isInteger(x)) return x;
-                x = Math.floor(x);
-                return x;
-
-            }
-            if (x < 0 || x > 999 || Number.isInteger(x) == false) return 'Введите верное число!';
-            else {
-                final.units = units(x);
-                final.tens = tens(x);
-                final.hundreds = hundreds(x);
-                return final;
-            };
-        }
-        let x = 862;;
-        console.log(one(x));
-
-        function Product(name, price) {
-            this.name = name;
-            this.price = price;
-        }
-
-    </script>
-    <script id='1.1 e5'>
-        'use strict';
-        Product.prototype.discount = function() {
-            this.price = this.price - (this.price * 25 / 100);
+    <script>
+        function lizard() {
+            var modalwindow = document.createElement("div");
+            modalwindow.className = "modalwindow";
+            modalwindow.innerHTML = "<h2>модальный заголовок</h2><p>Модальный текст</p><img src='./img/modal.jpg' alt='модальная картинка'><button onclick='closelizard()'>Закрыть окно</button>";
+            console.log(modalwindow);
+            body.appendChild(modalwindow);
         };
 
-        const product1 = new Product('Tovar', 549);
-        product1.discount();
-        console.log(product);
+        function closelizard() {
+            let x = document.getElementsByClassName('modalwindow');
+            body.removeChild(x[0]);
+        };
 
-    </script>
-    <script id='1.1 e6'>
-        'use strict';
-
-        class Product {
-            constructor(name, price) {
-                this.name = name;
-                this.price = price;
+        function infotext1() {
+            switch (document.querySelector("#btn1").value) {
+                case "Отмена":
+                    document.querySelector("#pic1").classList.remove("nopic");
+                    document.querySelector("#pic1").classList.add("yespic");
+                    document.querySelector("#body > div > div:nth-child(1) > div").remove();
+                    document.querySelector("#btn1").value = "Подробнее";
+                    break;
+                case "Подробнее":
+                    document.querySelector("#pic1").classList.add("nopic");
+                    var itext = document.createElement("div");
+                    itext.className = "itext";
+                    itext.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa architecto ad delectus saepe quaerat consectetur veniam, vel deleniti, numquam molestiae sunt";
+                    document.querySelector("#body > div > div:nth-child(1)").insertBefore(itext, document.querySelector("#btn1"));
+                    document.querySelector("#btn1").value = "Отмена";
+                    break;
             }
+        }
 
-            discount() {
-                this.price = this.price - (this.price * 25 / 100);
+        function infotext2() {
+
+
+            switch (document.querySelector("#btn2").value) {
+                case "Отмена":
+                    document.querySelector("#pic2").classList.remove("nopic");
+                    document.querySelector("#pic2").classList.add("yespic");
+                    document.querySelector("#body > div > div:nth-child(2) > div").remove();
+                    document.querySelector("#btn2").value = "Подробнее";
+                    break;
+                case "Подробнее":
+                    document.querySelector("#pic2").classList.add("nopic");
+                    var itext = document.createElement("div");
+                    itext.className = "itext";
+                    itext.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa architecto ad delectus saepe quaerat consectetur veniam, vel deleniti, numquam molestiae sunt";
+                    document.querySelector("#body > div > div:nth-child(2)").insertBefore(itext, document.querySelector("#btn2"));
+                    document.querySelector("#btn2").value = "Отмена";
+                    break;
             }
         }
+        function infotext3() {
 
-        const product1 = new Product('Tovar', 377);
-        product1.discount();
-
-        console.log(product1);
-
-    </script>
-    <script id='1.2 e5'>
-        'use strict';
-
-        function Post(author, text, date) {
-            this.author = author;
-            this.text = text;
-            this.date = date;
+            switch (document.querySelector("#btn3").value) {
+                case "Отмена":
+                    document.querySelector("#pic3").classList.remove("nopic");
+                    document.querySelector("#pic3").classList.add("yespic");
+                    document.querySelector("#body > div > div:nth-child(3) > div").remove();
+                    document.querySelector("#btn3").value = "Подробнее";
+                    break;
+                case "Подробнее":
+                    document.querySelector("#pic3").classList.add("nopic");
+                    var itext = document.createElement("div");
+                    itext.className = "itext";
+                    itext.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa architecto ad delectus saepe quaerat consectetur veniam, vel deleniti, numquam molestiae sunt";
+                    document.querySelector("#body > div > div:nth-child(3)").insertBefore(itext, document.querySelector("#btn3"));
+                    document.querySelector("#btn3").value = "Отмена";
+                    break;
+            }
         }
-
-        Post.prototype.edit = function(text) {
-            this.text = text;
-        }
-
-        const post1 = new Post('alex', 'lorem ipsum', new Date());
-        console.log(post1);
-        post1.edit('dolor sit');
-        console.log(post1);
-
-
-        function AttachedPost(author, text, date) {
-            Post.call(this, author, text, date);
-            this.highlighted = false;
-        }
-
-        AttachedPost.prototype = Object.create(Post.prototype);
-        AttachedPost.prototype.constructor = AttachedPost;
-
-        AttachedPost.prototype.makeTextHighlighted = function() {
-            this.highlighted = true;
-        }
-
-        const attached1 = new AttachedPost('admin', 'lorem2 ipsum2', new Date());
-        console.log(attached1);
-        attached1.makeTextHighlighted();
-        attached1.edit('dolor2 sit2');
-        console.log(attached1);
-
-    </script>
-    <script id='1.2 e6'>
-        'use strict';
-
-        function Post(author, text, date) {
-            this.author = author;
-            this.text = text;
-            this.date = date;
-        }
-
-        Post.prototype.edit = function(text) {
-            this.text = text;
-        }
-
-        const post1 = new Post('alex', 'lorem ipsum', new Date());
-        console.log(post1);
-        post1.edit('dolor sit');
-        console.log(post1);
-
-
-        function AttachedPost(author, text, date) {
-            Post.call(this, author, text, date);
-            this.highlighted = false;
-        }
-
-        AttachedPost.prototype = Object.create(Post.prototype);
-        AttachedPost.prototype.constructor = AttachedPost;
-
-        AttachedPost.prototype.makeTextHighlighted = function() {
-            this.highlighted = true;
-        }
-
-        const attached1 = new AttachedPost('admin', 'lorem2 ipsum2', new Date());
-        console.log(attached1);
-        attached1.makeTextHighlighted();
-        attached1.edit('dolor2 sit2');
-        console.log(attached1);
-
     </script>
 </body>
 
