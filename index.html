@@ -1,10 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>JS</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
-<body>
-    
+
+<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa tempora, nostrum culpa, omnis aliquam nesciunt!</h5>
+
+<body id="body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa architecto ad delectus saepe quaerat consectetur veniam, vel deleniti, numquam molestiae sunt, itaque harum, velit! Dolores quidem, eos voluptates perspiciatis! Distinctio, consequatur sapiente consequuntur. Amet, ipsa. Ducimus vel id assumenda officia inventore distinctio enim, nam sit hic fugit, similique, illo quod!</p>
+    <button onclick="lizard()"> Модальное окно</button>
+    <div class="infopanel">
+
+        <div class="infoblock">
+            <p class="infop">Product 1 name</p>
+            <img src="./img/infobg.jpg" id="pic1" alt="Product1img" width="200" height="200">
+            <input type="button" class="infob" onclick='infotext1()' id="btn1" value="Подробнее">
+        </div>
+        <div class="infoblock">
+            <p class="infop">Product 2 name</p>
+            <img src="./img/infobg.jpg" id="pic2" alt="Product2img" width="200" height="200">
+            <input type="button" class="infob" onclick='infotext2()' id="btn2" value="Подробнее">
+        </div>
+        <div class="infoblock">
+            <p class="infop">Product 2 name</p>
+            <img src="./img/infobg.jpg" id="pic3" alt="Product2img" width="200" height="200">
+            <input type="button" class="infob" onclick='infotext3()' id="btn3" value="Подробнее">
+        </div>
+    </div>
+    <input type="button" value="Создать шахматную доску">
+
+    <script>
+        function lizard() {
+            var modalwindow = document.createElement("div");
+            modalwindow.className = "modalwindow";
+            modalwindow.innerHTML = "<h2>модальный заголовок</h2><p>Модальный текст</p><img src='./img/modal.jpg' alt='модальная картинка'><button onclick='closelizard()'>Закрыть окно</button>";
+            console.log(modalwindow);
+            body.appendChild(modalwindow);
+        };
+
+        function closelizard() {
+            let x = document.getElementsByClassName('modalwindow');
+            body.removeChild(x[0]);
+        };
+
+        function infotext1() {
+            switch (document.querySelector("#btn1").value) {
+                case "Отмена":
+                    document.querySelector("#pic1").classList.remove("nopic");
+                    document.querySelector("#pic1").classList.add("yespic");
+                    document.querySelector("#body > div > div:nth-child(1) > div").remove();
+                    document.querySelector("#btn1").value = "Подробнее";
+                    break;
+                case "Подробнее":
+                    document.querySelector("#pic1").classList.add("nopic");
+                    var itext = document.createElement("div");
+                    itext.className = "itext";
+                    itext.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa architecto ad delectus saepe quaerat consectetur veniam, vel deleniti, numquam molestiae sunt";
+                    document.querySelector("#body > div > div:nth-child(1)").insertBefore(itext, document.querySelector("#btn1"));
+                    document.querySelector("#btn1").value = "Отмена";
+                    break;
+            }
+        }
+
+        function infotext2() {
+
+
+            switch (document.querySelector("#btn2").value) {
+                case "Отмена":
+                    document.querySelector("#pic2").classList.remove("nopic");
+                    document.querySelector("#pic2").classList.add("yespic");
+                    document.querySelector("#body > div > div:nth-child(2) > div").remove();
+                    document.querySelector("#btn2").value = "Подробнее";
+                    break;
+                case "Подробнее":
+                    document.querySelector("#pic2").classList.add("nopic");
+                    var itext = document.createElement("div");
+                    itext.className = "itext";
+                    itext.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa architecto ad delectus saepe quaerat consectetur veniam, vel deleniti, numquam molestiae sunt";
+                    document.querySelector("#body > div > div:nth-child(2)").insertBefore(itext, document.querySelector("#btn2"));
+                    document.querySelector("#btn2").value = "Отмена";
+                    break;
+            }
+        }
+        function infotext3() {
+
+            switch (document.querySelector("#btn3").value) {
+                case "Отмена":
+                    document.querySelector("#pic3").classList.remove("nopic");
+                    document.querySelector("#pic3").classList.add("yespic");
+                    document.querySelector("#body > div > div:nth-child(3) > div").remove();
+                    document.querySelector("#btn3").value = "Подробнее";
+                    break;
+                case "Подробнее":
+                    document.querySelector("#pic3").classList.add("nopic");
+                    var itext = document.createElement("div");
+                    itext.className = "itext";
+                    itext.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa architecto ad delectus saepe quaerat consectetur veniam, vel deleniti, numquam molestiae sunt";
+                    document.querySelector("#body > div > div:nth-child(3)").insertBefore(itext, document.querySelector("#btn3"));
+                    document.querySelector("#btn3").value = "Отмена";
+                    break;
+            }
+        }
+    </script>
 </body>
+
 </html>

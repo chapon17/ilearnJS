@@ -1,0 +1,59 @@
+.modalwindow {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    /*затемнитефон*/
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+
+}
+
+html,
+body {
+    position: relative;
+    width: 100%;
+    height: 100%
+}
+
+body {
+    position: relative;
+}
+
+.infopanel {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.infoblock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 15px;
+}
+.nopic{
+    display: none;
+}
+.itext{
+    width: 200px;
+    height: 200px;
+}
+.yespick{
+    display: flex;
+}
+.whitechess{
+    background-color: white;
+}
+.blackchess{
+    background-color: black;
+}
